@@ -1,72 +1,1105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>حسن خانی | وکیل متخصص دعاوی بیمه</title>
+  <meta name="description" content="وب‌سایت شخصی حسن خانی، وکیل متخصص حوزه بیمه با سابقه همکاری با شرکت‌های بزرگ قزوین، پرونده‌های مالی موفق و فعالیت علمی در زمینه هوش مصنوعی و وکالت." />
+  <style>
+    :root{
+      --bg:#0f0f0f;
+      --bg-2:#161616;
+      --card:#1b1b1b;
+      --line:rgba(212,175,55,.18);
+      --gold:#c8a96b;
+      --gold-2:#e0c58a;
+      --khaki:#9b8b6f;
+      --text:#f4f1ea;
+      --muted:#b9b1a2;
+      --soft:#8b8376;
+      --shadow:0 10px 40px rgba(0,0,0,.45);
+      --radius:22px;
+      --radius-sm:16px;
+      --max:1200px;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family: "Tahoma", "Vazirmatn", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(200,169,107,.08), transparent 25%),
+        radial-gradient(circle at left bottom, rgba(155,139,111,.08), transparent 25%),
+        linear-gradient(180deg, #0b0b0b 0%, #101010 100%);
+      color:var(--text);
+      line-height:1.9;
+      overflow-x:hidden;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .container{
+      width:min(92%, var(--max));
+      margin:auto;
+    }
+
+    .glow{
+      position:fixed;
+      width:420px;
+      height:420px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(200,169,107,.08), transparent 65%);
+      filter:blur(20px);
+      z-index:-1;
+      pointer-events:none;
+      animation:floatGlow 12s ease-in-out infinite alternate;
+    }
+
+    .glow.one{
+      top:-120px;
+      right:-100px;
+    }
+
+    .glow.two{
+      bottom:-120px;
+      left:-120px;
+      animation-duration:14s;
+    }
+
+    @keyframes floatGlow{
+      from{transform:translateY(0) translateX(0) scale(1);}
+      to{transform:translateY(30px) translateX(-20px) scale(1.08);}
+    }
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter:blur(16px);
+      background:rgba(10,10,10,.72);
+      border-bottom:1px solid rgba(212,175,55,.1);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 0;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:700;
+      color:var(--gold-2);
+      letter-spacing:.3px;
+    }
+
+    .brand-badge{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      background:linear-gradient(135deg, rgba(200,169,107,.22), rgba(155,139,111,.14));
+      border:1px solid rgba(212,175,55,.18);
+      display:grid;
+      place-items:center;
+      color:var(--gold-2);
+      font-size:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      color:var(--muted);
+      font-size:14px;
+      padding:8px 14px;
+      border-radius:999px;
+      transition:.3s;
+    }
+
+    .nav-links a:hover{
+      color:var(--gold-2);
+      background:rgba(200,169,107,.08);
+    }
+
+    .menu-btn{
+      display:none;
+      background:none;
+      border:1px solid rgba(212,175,55,.18);
+      color:var(--gold-2);
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      font-size:22px;
+      cursor:pointer;
+    }
+
+    /* Hero */
+    .hero{
+      padding:90px 0 50px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:28px;
+      align-items:stretch;
+    }
+
+    .hero-card, .side-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card{
+      padding:44px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, transparent, rgba(200,169,107,.04), transparent);
+      transform:translateX(-100%);
+      animation:shine 7s linear infinite;
+    }
+
+    @keyframes shine{
+      to{transform:translateX(100%);}
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid rgba(212,175,55,.16);
+      color:var(--gold-2);
+      background:rgba(200,169,107,.06);
+      font-size:13px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      font-size:clamp(30px, 5vw, 64px);
+      line-height:1.25;
+      margin-bottom:18px;
+      color:#fff7ea;
+      font-weight:800;
+    }
+
+    .hero h1 span{
+      color:var(--gold);
+    }
+
+    .lead{
+      color:var(--muted);
+      font-size:17px;
+      max-width:760px;
+      margin-bottom:28px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-bottom:28px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 22px;
+      border-radius:16px;
+      transition:.3s ease;
+      border:1px solid transparent;
+      cursor:pointer;
+      font-weight:700;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg, var(--gold), #b99651);
+      color:#151515;
+      box-shadow:0 8px 30px rgba(200,169,107,.22);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 34px rgba(200,169,107,.28);
+    }
+
+    .btn-secondary{
+      border-color:rgba(212,175,55,.2);
+      color:var(--gold-2);
+      background:rgba(255,255,255,.02);
+    }
+
+    .btn-secondary:hover{
+      background:rgba(200,169,107,.08);
+      transform:translateY(-2px);
+    }
+
+    .facts{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .fact{
+      background:rgba(255,255,255,.02);
+      border:1px solid rgba(212,175,55,.12);
+      border-radius:18px;
+      padding:18px;
+    }
+
+    .fact strong{
+      display:block;
+      font-size:24px;
+      color:var(--gold-2);
+      margin-bottom:4px;
+    }
+
+    .fact span{
+      color:var(--soft);
+      font-size:14px;
+    }
+
+    .side-card{
+      padding:26px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .profile-box{
+      background:linear-gradient(180deg, rgba(200,169,107,.10), rgba(255,255,255,.02));
+      border:1px solid rgba(212,175,55,.16);
+      border-radius:24px;
+      padding:28px;
+      min-height:260px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .profile-box::after{
+      content:"⚖";
+      position:absolute;
+      left:18px;
+      bottom:-10px;
+      font-size:90px;
+      color:rgba(212,175,55,.08);
+      font-weight:bold;
+    }
+
+    .profile-box h3{
+      font-size:26px;
+      color:var(--gold-2);
+      margin-bottom:8px;
+    }
+
+    .profile-box p{
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .mini-list{
+      display:grid;
+      gap:12px;
+    }
+
+    .mini-item{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      padding:14px 14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.02);
+      border:1px solid rgba(212,175,55,.12);
+    }
+
+    .mini-icon{
+      min-width:40px;
+      width:40px;
+      height:40px;
+      display:grid;
+      place-items:center;
+      border-radius:12px;
+      background:rgba(200,169,107,.08);
+      color:var(--gold-2);
+      font-size:18px;
+    }
+
+    .mini-item h4{
+      color:#f2e8d6;
+      font-size:15px;
+      margin-bottom:3px;
+    }
+
+    .mini-item p{
+      color:var(--soft);
+      font-size:13px;
+      line-height:1.8;
+    }
+
+    /* Sections */
+    section{
+      padding:36px 0;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:24px;
+      flex-wrap:wrap;
+    }
+
+    .section-title h2{
+      font-size:clamp(24px, 4vw, 38px);
+      color:#fff5df;
+    }
+
+    .section-title p{
+      color:var(--muted);
+      max-width:720px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:20px;
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border:1px solid var(--line);
+      border-radius:var(--radius-sm);
+      padding:24px;
+      transition:.3s;
+      box-shadow:var(--shadow);
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(212,175,55,.28);
+    }
+
+    .card .icon{
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      font-size:24px;
+      margin-bottom:16px;
+      color:var(--gold-2);
+      background:rgba(200,169,107,.08);
+      border:1px solid rgba(212,175,55,.12);
+    }
+
+    .card h3{
+      margin-bottom:10px;
+      color:#f7edd9;
+      font-size:18px;
+    }
+
+    .card p{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .about-wrap{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .about-panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .about-panel h3{
+      color:var(--gold-2);
+      margin-bottom:12px;
+      font-size:20px;
+    }
+
+    .about-panel p{
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .timeline{
+      display:grid;
+      gap:16px;
+    }
+
+    .timeline-item{
+      position:relative;
+      padding:18px 18px 18px 18px;
+      border:1px solid rgba(212,175,55,.12);
+      border-radius:18px;
+      background:rgba(255,255,255,.02);
+      overflow:hidden;
+    }
+
+    .timeline-item::before{
+      content:"";
+      position:absolute;
+      top:0;
+      right:0;
+      width:4px;
+      height:100%;
+      background:linear-gradient(180deg, var(--gold), transparent);
+    }
+
+    .timeline-item h4{
+      color:#f8ebd0;
+      margin-bottom:6px;
+      font-size:17px;
+    }
+
+    .timeline-item .meta{
+      color:var(--gold);
+      font-size:13px;
+      margin-bottom:8px;
+    }
+
+    .timeline-item p{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .highlight{
+      color:var(--gold-2);
+      font-weight:700;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+
+    .chip{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(212,175,55,.14);
+      background:rgba(200,169,107,.06);
+      color:#e9d5a7;
+      font-size:13px;
+    }
+
+    .quote-box{
+      padding:30px;
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(200,169,107,.06), rgba(255,255,255,.01));
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .quote-box::before{
+      content:"“";
+      position:absolute;
+      top:-8px;
+      right:18px;
+      font-size:90px;
+      color:rgba(212,175,55,.12);
+      line-height:1;
+    }
+
+    .quote-box p{
+      color:#f1eadf;
+      font-size:20px;
+      line-height:2;
+      position:relative;
+      z-index:1;
+    }
+
+    .quote-box span{
+      display:block;
+      margin-top:12px;
+      color:var(--gold);
+      font-size:14px;
+    }
+
+    /* Contact */
+    .contact-box{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:20px;
+    }
+
+    .contact-card, .contact-form{
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-list{
+      display:grid;
+      gap:14px;
+      margin-top:20px;
+    }
+
+    .contact-row{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:var(--muted);
+      padding:14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.02);
+      border:1px solid rgba(212,175,55,.10);
+    }
+
+    .contact-row b{
+      color:#f1e7d7;
+    }
+
+    .contact-form form{
+      display:grid;
+      gap:14px;
+    }
+
+    .input, .textarea{
+      width:100%;
+      background:#141414;
+      border:1px solid rgba(212,175,55,.14);
+      color:var(--text);
+      border-radius:14px;
+      padding:14px 16px;
+      outline:none;
+      transition:.25s;
+      font-family:inherit;
+    }
+
+    .input:focus, .textarea:focus{
+      border-color:rgba(212,175,55,.34);
+      box-shadow:0 0 0 4px rgba(200,169,107,.08);
+    }
+
+    .textarea{
+      min-height:130px;
+      resize:vertical;
+    }
+
+    .footer{
+      padding:30px 0 45px;
+      color:var(--soft);
+      text-align:center;
+      font-size:14px;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(24px);
+      transition:all .8s ease;
+    }
+
+    .reveal.active{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid,
+      .about-wrap,
+      .contact-box{
+        grid-template-columns:1fr;
+      }
+
+      .grid-3{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .facts{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 760px){
+      .menu-btn{
+        display:block;
+      }
+
+      .nav{
+        position:relative;
+      }
+
+      .nav-links{
+        position:absolute;
+        top:78px;
+        right:0;
+        left:0;
+        background:rgba(12,12,12,.97);
+        border:1px solid rgba(212,175,55,.12);
+        border-radius:18px;
+        padding:12px;
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .nav-links.show{
+        display:flex;
+      }
+
+      .nav-links a{
+        padding:12px 14px;
+        border-radius:12px;
+      }
+
+      .hero{
+        padding-top:50px;
+      }
+
+      .hero-card, .side-card, .about-panel, .contact-card, .contact-form{
+        padding:20px;
+      }
+
+      .grid-3{
+        grid-template-columns:1fr;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .quote-box p{
+        font-size:17px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!--  <img width="30%" height="500px " src="./image/profi.jpg" alt="">-->
-  <header class="header">
-        <a href="#" class="logo">پروفایل من</a>
-        
-        <nav class="navbar">
-            <a href="#" style="--i:5;"  class="active">خانه</a>
-            <a href="#" style="--i:4;">درباره ما</a>
-            <a href="#" style="--i:3;">مهارت ها</a>
-            <a href="#" style="--i:2;">پروف</a>
-            <a href="#" style="--i:1;">مخاطب</a>
-            
-        
-        </nav>
-        </header>
-    
-    
-    
-    <main class="main">
 
-        <div class="continou">
-        <section class="home">
-            <div class="home-content">
-                <h3>سلام به صفحه من خوش آمدید </h3>
-                <h1>محمد سام هستم</h1>
-                <h3>من  <span class="multiple-text"></span></h3>
-                <p>لورم  را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
-                
-                <div class="social-media">
-                    <a href="#" style="--i:9;"><i class='bx bxl-instagram-alt' ></i></a>
-                    <a href="#" style="--i:8;"><i class='bx bxl-telegram' ></i></a>
-                    
-                    <a href="#" style="--i:7;"><i class='bx bxl-github' ></i></a>
-                  
-                </div>
-                <a href="#" class="btn">دانلود رزومه</a>
-            </div>
+  <div class="glow one"></div>
+  <div class="glow two"></div>
 
-            <div class="home-image">
-                <img style="border-radius: 30px;" src="./image/sam3.jpg" alt="">
-            </div>
+  <header>
+    <div class="container nav">
+      <a href="#home" class="brand">
+        <div class="brand-badge">⚖</div>
+        <div>
+          <div>حسن خانی</div>
+          <small style="color: var(--khaki); font-weight: 400;">وکیل متخصص دعاوی بیمه</small>
         </div>
-        </section>
-    </main>
-    
-    
-    <footer class="footer">
+      </a>
 
-    </footer>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <script>
-        var typed = new Typed('.multiple-text', {
-          strings: ['تولید کننده محتوا', 'طراح سایت با ورد پرس','توسعه دهنده فرانت اند','آماده برای انجام  سئو انواع وب سایت '],
-          typeSpeed:100,
-    backSpeed:60,
-    backDelay:700,
-    loop:true
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">خانه</a>
+        <a href="#services">خدمات</a>
+        <a href="#about">درباره من</a>
+        <a href="#experience">سوابق</a>
+        <a href="#articles">فعالیت علمی</a>
+        <a href="#contact">ارتباط</a>
+      </nav>
 
-        });
-      </script>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-card reveal">
+          <div class="tag">وکالت تخصصی در حوزه بیمه و دعاوی مالی</div>
+          <h1>
+            حسن خانی،
+            <span>وکیل جوان، دقیق و نتیجه‌گرا</span>
+            در پرونده‌های بیمه
+          </h1>
+          <p class="lead">
+            من <span class="highlight">حسن خانی</span>، ۲۸ ساله، دانش‌آموخته مقطع
+            <span class="highlight">کارشناسی ارشد در تهران</span> هستم و تمرکز حرفه‌ای خود را به‌صورت
+            تخصصی بر <span class="highlight">حوزه بیمه</span> قرار داده‌ام.
+            سابقه فعالیت با شرکت‌های بزرگ قزوین، پیروزی در پرونده‌های مالی مهم و همچنین
+            فعالیت علمی در زمینه <span class="highlight">مقالات ISI مرتبط با هوش مصنوعی و وکالت</span>
+            بخشی از مسیر حرفه‌ای من است.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">درخواست مشاوره</a>
+            <a href="#experience" class="btn btn-secondary">مشاهده سوابق حرفه‌ای</a>
+          </div>
+
+          <div class="facts">
+            <div class="fact">
+              <strong>تخصصی</strong>
+              <span>تمرکز حرفه‌ای فقط بر دعاوی بیمه</span>
+            </div>
+            <div class="fact">
+              <strong>قزوین</strong>
+              <span>همکاری با شرکت‌های بزرگ و معتبر</span>
+            </div>
+            <div class="fact">
+              <strong>ISI</strong>
+              <span>فعالیت علمی در هوش مصنوعی و وکالت</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="side-card reveal">
+          <div class="profile-box">
+            <h3>پرونده‌محور، دقیق و مینیمال</h3>
+            <p>
+              نگاه من در وکالت، بر پایه تحلیل حقوقی روشن، شناخت ساختار پرونده‌های بیمه
+              و پیگیری حرفه‌ای تا دستیابی به نتیجه قابل اتکا است.
+            </p>
+          </div>
+
+          <div class="mini-list">
+            <div class="mini-item">
+              <div class="mini-icon">🏛</div>
+              <div>
+                <h4>حوزه فعالیت</h4>
+                <p>وکالت تخصصی در مسائل، اختلافات و دعاوی مرتبط با بیمه</p>
+              </div>
+            </div>
+            <div class="mini-item">
+              <div class="mini-icon">📚</div>
+              <div>
+                <h4>پیشینه علمی</h4>
+                <p>مقالات علمی ISI با محور هوش مصنوعی در موضوعات حقوقی و وکالتی</p>
+              </div>
+            </div>
+            <div class="mini-item">
+              <div class="mini-icon">💼</div>
+              <div>
+                <h4>سوابق حرفه‌ای</h4>
+                <p>تجربه همکاری با شرکت‌های بزرگ قزوین و موفقیت در پرونده‌های مالی ارزشمند</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>خدمات تخصصی</h2>
+          <p>
+            تمرکز این مجموعه صرفاً بر پرونده‌ها و دعاوی حوزه بیمه است؛ با رویکردی حرفه‌ای،
+            مستند و متناسب با نیاز اشخاص، شرکت‌ها و پرونده‌های مالی حساس.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card reveal">
+            <div class="icon">⚖</div>
+            <h3>دعاوی بیمه‌ای</h3>
+            <p>
+              بررسی و پیگیری تخصصی اختلافات مرتبط با قراردادهای بیمه، تعهدات بیمه‌گر،
+              خسارات، تفسیر تعهدات و مطالبه حقوق قانونی موکل.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="icon">📑</div>
+            <h3>مشاوره حقوقی بیمه</h3>
+            <p>
+              ارائه مشاوره دقیق در زمینه تنظیم، تفسیر و بررسی اسناد، قراردادها و فرآیندهای
+              حقوقی مرتبط با پرونده‌های بیمه‌ای و مالی.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="icon">💰</div>
+            <h3>پرونده‌های مالی مرتبط</h3>
+            <p>
+              تحلیل حقوقی پرونده‌های مالی دارای ارتباط با تعهدات بیمه‌ای و دفاع مستند
+              برای دستیابی به بهترین نتیجه ممکن در چارچوب قانون.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>درباره من</h2>
+          <p>
+            تلفیق دانش حقوقی، نگاه تحلیلی و پیگیری حرفه‌ای، اساس مسیر کاری من را شکل داده است.
+          </p>
+        </div>
+
+        <div class="about-wrap">
+          <div class="about-panel reveal">
+            <h3>هویت حرفه‌ای</h3>
+            <p>
+              من <span class="highlight">حسن خانی</span>، ۲۸ ساله و دانش‌آموخته
+              <span class="highlight">مقطع ارشد در تهران</span> هستم. حوزه فعالیت من به‌صورت
+              تخصصی بر <span class="highlight">حقوق بیمه</span> متمرکز است و در این مسیر تلاش کرده‌ام
+              ضمن حفظ دقت و متانت حرفه‌ای، برای موکلان خود راهکارهای حقوقی واقعی، روشن و قابل اتکا ارائه دهم.
+            </p>
+            <div class="chips">
+              <span class="chip">وکالت تخصصی بیمه</span>
+              <span class="chip">پرونده‌های مالی</span>
+              <span class="chip">تحلیل حقوقی</span>
+              <span class="chip">رویکرد علمی</span>
+            </div>
+          </div>
+
+          <div class="about-panel reveal">
+            <h3>رویکرد کاری</h3>
+            <p>
+              باور دارم در پرونده‌های حقوقی، به‌ویژه در حوزه بیمه، موفقیت تنها با دانش نظری
+              حاصل نمی‌شود؛ بلکه نیازمند شناخت عملی پرونده، توجه به جزئیات، تنظیم استراتژی دفاع
+              و پیگیری منظم تا پایان مسیر است. همین نگاه باعث شده است در پرونده‌های مالی مهم،
+              نتایج قابل توجهی به دست آید.
+            </p>
+            <div class="chips">
+              <span class="chip">دقت در مستندات</span>
+              <span class="chip">دفاع هدفمند</span>
+              <span class="chip">نتیجه‌گرایی</span>
+              <span class="chip">حفظ محرمانگی</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>سوابق و دستاوردها</h2>
+          <p>
+            خلاصه‌ای از مسیر حرفه‌ای و علمی با تمرکز بر اعتبار، تخصص و تجربه در حوزه بیمه.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <h4>فعالیت تخصصی در حوزه بیمه</h4>
+            <div class="meta">تمرکز حرفه‌ای اصلی</div>
+            <p>
+              فعالیت وکالتی با تمرکز مشخص و تخصصی بر دعاوی و مسائل مرتبط با بیمه، با هدف
+              ارائه دفاع مؤثر و تحلیل حقوقی دقیق در پرونده‌های حساس و تخصصی.
+            </p>
+          </div>
+
+          <div class="timeline-item reveal">
+            <h4>همکاری با شرکت‌های بزرگ قزوین</h4>
+            <div class="meta">سوابق حرفه‌ای معتبر</div>
+            <p>
+              تجربه همکاری و ارائه خدمات حقوقی در ارتباط با مجموعه‌ها و شرکت‌های بزرگ در قزوین،
+              که این امر نشان‌دهنده اعتماد حرفه‌ای شکل‌گرفته بر پایه دقت، تعهد و نتیجه‌محوری است.
+            </p>
+          </div>
+
+          <div class="timeline-item reveal">
+            <h4>موفقیت در پرونده‌های مالی مهم</h4>
+            <div class="meta">دستاوردهای عملی</div>
+            <p>
+              پیگیری و کسب نتایج مثبت در پرونده‌های مالی با اهمیت، به‌ویژه در مواردی که
+              نیازمند تحلیل هم‌زمان ابعاد حقوقی، مالی و تعهدات قراردادی بیمه‌ای بوده است.
+            </p>
+          </div>
+
+          <div class="timeline-item reveal">
+            <h4>مقالات ISI در حوزه هوش مصنوعی و وکالت</h4>
+            <div class="meta">فعالیت علمی و پژوهشی</div>
+            <p>
+              فعالیت پژوهشی و نگارش مقالات علمی در سطح ISI با تمرکز بر موضوعات مرتبط با
+              <span class="highlight">هوش مصنوعی و کاربرد آن در حوزه حقوق و وکالت</span>؛
+              مسیری که رویکرد تحلیلی و به‌روز من را در مسائل حرفه‌ای تقویت کرده است.
+            </p>
+          </div>
+
+          <div class="timeline-item reveal">
+            <h4>تحصیلات تکمیلی در تهران</h4>
+            <div class="meta">پایه علمی و دانشگاهی</div>
+            <p>
+              تحصیل در مقطع کارشناسی ارشد در تهران و بهره‌گیری از این پشتوانه علمی برای
+              توسعه نگاه ساختارمند، دقیق و پژوهش‌محور در پرونده‌های تخصصی.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles -->
+    <section id="articles">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>نگاه علمی و پژوهشی</h2>
+          <p>
+            وکالت حرفه‌ای وقتی عمیق‌تر می‌شود که با پژوهش و شناخت روندهای نوین همراه باشد.
+          </p>
+        </div>
+
+        <div class="quote-box reveal">
+          <p>
+            در کنار فعالیت حرفه‌ای در حوزه وکالت بیمه، همواره تلاش کرده‌ام با مطالعه و
+            پژوهش در مرز میان <strong>حقوق، وکالت و هوش مصنوعی</strong>، نگاهی نو و تحلیلی
+            به مسائل حقوقی داشته باشم؛ نگاهی که بتواند در آینده، تصمیم‌سازی حقوقی را دقیق‌تر،
+            سریع‌تر و هوشمندانه‌تر کند.
+          </p>
+          <span>حسن خانی — وکیل متخصص حوزه بیمه</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>ارتباط و درخواست مشاوره</h2>
+          <p>
+            برای طرح موضوع، دریافت مشاوره اولیه یا هماهنگی جهت بررسی پرونده‌های بیمه‌ای می‌توانید پیام ارسال کنید.
+          </p>
+        </div>
+
+        <div class="contact-box">
+          <div class="contact-card reveal">
+            <h3 style="color: var(--gold-2); margin-bottom:10px;">اطلاعات حرفه‌ای</h3>
+            <p style="color: var(--muted);">
+              این وب‌سایت با هدف معرفی خدمات تخصصی و سوابق حرفه‌ای در حوزه بیمه طراحی شده است.
+            </p>
+
+            <div class="contact-list">
+              <div class="contact-row">
+                <span>👤</span>
+                <div><b>نام:</b> حسن خانی</div>
+              </div>
+              <div class="contact-row">
+                <span>🎓</span>
+                <div><b>تحصیلات:</b> کارشناسی ارشد، تهران</div>
+              </div>
+              <div class="contact-row">
+                <span>⚖</span>
+                <div><b>حوزه تخصص:</b> دعاوی و امور حقوقی بیمه</div>
+              </div>
+              <div class="contact-row">
+                <span>🏢</span>
+                <div><b>سابقه فعالیت:</b> همکاری با شرکت‌های بزرگ قزوین</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form reveal">
+            <h3 style="color: var(--gold-2); margin-bottom:14px;">ارسال پیام</h3>
+            <form id="consultForm">
+              <input class="input" type="text" id="name" placeholder="نام و نام خانوادگی" required />
+              <input class="input" type="tel" id="phone" placeholder="شماره تماس" required />
+              <textarea class="textarea" id="message" placeholder="موضوع پرونده یا درخواست مشاوره..." required></textarea>
+              <button type="submit" class="btn btn-primary">ارسال درخواست</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © تمامی حقوق این وب‌سایت محفوظ است — حسن خانی | وکیل متخصص حوزه بیمه
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('show');
+      });
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(item => observer.observe(item));
+
+    // Fake form submit
+    const form = document.getElementById('consultForm');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if(!name || !phone || !message){
+        alert('لطفاً همه فیلدها را تکمیل کنید.');
+        return;
+      }
+
+      alert('درخواست شما با موفقیت ثبت شد. به‌زودی با شما تماس گرفته می‌شود.');
+      form.reset();
+    });
+  </script>
 </body>
 </html>
